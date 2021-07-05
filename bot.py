@@ -47,24 +47,7 @@ def help(update, ctx):
                 db.addUser(str(user["username"]), str(user["id"]), str(wif))
                 ctx.bot.send_message(chat_id=update.message.chat_id, text=f"[{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']}), You have been successfully registered", parse_mode="MarkdownV2")
                 if update.message.chat.type == "private":
-                    ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
-Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
-1\\. /help
-2\\. /price
-3\\. /info
-4\\. /tip @user amount
-5\\. /deposit
-6\\. /balance
-7\\. /withdraw address amount
-8\\. /export
-9\\. /about
-                    """, parse_mode="MarkdownV2")
-                    ctx.bot.send_message(chat_id=update.message.chat_id,
-                                         text="*Please Note: * It is highly recommended that you do not directly mine to the "
-                                              "address given by this bot\\. Download a full node here: "
-                                              "[Full Node](https://github\\.com/widecoin\\-project/widecoin/releases/latest)",
-                                         parse_mode="MarkdownV2")
-                else:
+# Edit Desc Other Cons
                     ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
 Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
 1\\. /help
@@ -73,7 +56,26 @@ Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\
 4\\. /tip @user amount
 5\\. /deposit \\(DM Bot\\)
 6\\. /balance \\(DM Bot\\)
-7\\. /withdraw address amount \\(DM Bot\\)
+7\\. /withdraw address amount \\(DM Bot \\- This version is support only with bech32 address\\)
+8\\. /export \\(DM Bot\\)
+9\\. /about \\(DM Bot\\)
+                    """, parse_mode="MarkdownV2")
+                    ctx.bot.send_message(chat_id=update.message.chat_id,
+                                         text="*Please Note: * It is highly recommended that you do not directly mine to the "
+                                              "address given by this bot\\. Download a full node here: "
+                                              "[Full Node](https://github\\.com/widecoin\\-project/widecoin/releases/latest)",
+                                         parse_mode="MarkdownV2")
+                else:
+# Edit Desc in Group + User
+                    ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
+Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
+1\\. /help
+2\\. /price
+3\\. /info \\(DM Bot\\)
+4\\. /tip @user amount
+5\\. /deposit \\(DM Bot\\)
+6\\. /balance \\(DM Bot\\)
+7\\. /withdraw address amount \\(DM Bot \\- This version is support only with bech32 address\\)
 8\\. /export \\(DM Bot\\)
 9\\. /about \\(DM Bot\\)
                     """, parse_mode="MarkdownV2")
@@ -87,25 +89,7 @@ Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\
                     db.updateUser(str(user["id"]), user["username"])
 
                 if update.message.chat.type == "private":
-
-                    ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
-Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
-1\\. /help
-2\\. /price
-3\\. /info
-4\\. /tip @user amount
-5\\. /deposit
-6\\. /balance
-7\\. /withdraw address amount
-8\\. /export
-9\\. /about
-                    """, parse_mode="MarkdownV2")
-                    ctx.bot.send_message(chat_id=update.message.chat_id,
-                                         text="*Please Note: * It is highly recommended that you do not directly mine to the "
-                                              "address given by this bot\\. Download a full node here: "
-                                              "[Full Node](https://github\\.com/widecoin\\-project/widecoin/releases/latest)",
-                                         parse_mode="MarkdownV2")
-                else:
+#Edit Desc in Bot 
                     ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
 Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
 1\\. /help
@@ -114,7 +98,26 @@ Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\
 4\\. /tip @user amount
 5\\. /deposit \\(DM Bot\\)
 6\\. /balance \\(DM Bot\\)
-7\\. /withdraw address amount \\(DM Bot\\)
+7\\. /withdraw address amount \\(DM Bot \\- This version is support only with bech32 address\\)
+8\\. /export \\(DM Bot\\)
+9\\. /about \\(DM Bot\\)
+                    """, parse_mode="MarkdownV2")
+                    ctx.bot.send_message(chat_id=update.message.chat_id,
+                                         text="*Please Note: * It is highly recommended that you do not directly mine to the "
+                                              "address given by this bot\\. Download a full node here: "
+                                              "[Full Node](https://github\\.com/widecoin\\-project/widecoin/releases/latest)",
+                                         parse_mode="MarkdownV2")
+                else:
+#Edit Desc in Group + Admin
+                    ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
+Hey there [{escape_markdown(user['first_name'], 2)}](tg://user?id={user['id']})\\. Here are my commands:
+1\\. /help
+2\\. /price
+3\\. /info \\(DM Bot\\)
+4\\. /tip @user amount
+5\\. /deposit \\(DM Bot\\)
+6\\. /balance \\(DM Bot\\)
+7\\. /withdraw address amount \\(DM Bot \\- This version is support only with bech32 address\\)
 8\\. /export \\(DM Bot\\)
 9\\. /about \\(DM Bot\\)
                     """, parse_mode="MarkdownV2")
@@ -137,8 +140,8 @@ def about(update, ctx):
             ctx.bot.send_message(chat_id=update.message.chat_id,
                                  text="""
 Hello there,
-I am the Widecoin Telegram Tipbot, created by [salmaan1234](tg://user?id=905257225)\\. Run /help to see my full list of commands\\.
-This bot is fully [Open Source](https://github\\.com/widecoin\\-project/widecoinTGBot)\\.
+I am the Widecoin Telegram Tipbot, created by [salmaan1234] & [Widecoin]\\. Run /help to see my full list of commands\\.
+This bot is fully [Open Source](https://github\\.com/widecoin\\-project/TG\\-TipBot)\\.
                                  """, parse_mode="MarkdownV2")
         else:
             ctx.bot.send_message(chat_id=update.message.chat_id,
@@ -153,14 +156,24 @@ def price(update, ctx):
     if timestart < int(timestamp):
 
         price = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={config.coin['coin_name']}&vs_currencies=usd,btc").json()
-
-        btc = str(format(price[config.coin['coin_name']]["btc"], '.8f'))
-        usd = str(price[config.coin['coin_name']]["usd"])
-
-        ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
-Current {config.coin['ticker']}/BTC price: {btc} BTC
+        price2 = requests.get(f"https://api.coinpaprika.com/v1/ticker/{config.coin['ticker']}-{config.coin['coin_name']}").json()
+        print(str(price2['name']).lower())
+        if len(price)>0:
+            btc = str(format(price[config.coin['coin_name']]["btc"], '.8f'))
+            usd = str(price[config.coin['coin_name']]["usd"])
+            ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
+    Current {config.coin['ticker']}/BTC price: {btc} BTC
 Current {config.coin['ticker']}/USD price: ${usd}
-""", parse_mode="HTML")
+    """, parse_mode="HTML")
+        elif len(price2)>0 and ((price2['name']).lower()==(config.coin['coin_name']).lower()):
+            btc = price2["price_btc"]
+            usd = price2["price_usd"]
+            ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
+    Current {config.coin['ticker']}/BTC price: {btc} BTC
+Current {config.coin['ticker']}/USD price: ${usd}
+    """, parse_mode="HTML")
+        else:
+            ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""Error market cap connection""", parse_mode="HTML")
 
 def info(update, ctx):
     gettime = str(update.message.date).split()
@@ -456,7 +469,8 @@ def tip_or_withdrawFunc(update, ctx):
                     txid = requests.post(f"{config.apiUrl}/broadcast", data=post_data).json()['result']
 
                     ctx.bot.send_message(chat_id=chID, text=f"Success, sent @{db.getUserName(data[1])} {data[2]} {config.coin['ticker']}.")
-                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://139\\.59\\.190\\.234/explorer/#/transaction/{str(txid)})", parse_mode="MarkdownV2")
+                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](https://explorer.widecoin.org/tx/{str(txid)})", parse_mode="MarkdownV2")
+                    #ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://139\\.59\\.190\\.234/explorer/#/transaction/{str(txid)})", parse_mode="MarkdownV2")
                 else:
                     ctx.bot.send_message(chat_id=chID, text="You do not have enough funds to tip that amount")
 
@@ -509,7 +523,8 @@ def tip_or_withdrawFunc(update, ctx):
                     txid = requests.post(f"{config.apiUrl}/broadcast", data=post_data).json()['result']
 
                     ctx.bot.send_message(chat_id=chID, text=f"Success, withdrew {data[2]} {config.coin['ticker']} to address {target_address.to_string()} ")
-                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://139\\.59\\.190\\.234/explorer/#/transaction/{str(txid)})", parse_mode="MarkdownV2")
+                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://explorer.widecoin.org/tx/{str(txid)})", parse_mode="MarkdownV2")
+                    #ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://139\\.59\\.190\\.234/explorer/#/transaction/{str(txid)})", parse_mode="MarkdownV2")
                 else:
                     ctx.bot.send_message(chat_id=chID, text="You do not have enough funds to withdraw the specified amount.")
             elif data[0] == "N":
