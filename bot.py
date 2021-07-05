@@ -242,7 +242,7 @@ def tip(update, ctx):
                                     keyboard = [
                                         [
                                             InlineKeyboardButton("Yes", callback_data=f"Y,{db.getUserID(target)},{amount},{user['id']},t"),
-                                            InlineKeyboardButton("No", callback_data=f"N,{target},{amount},{user['id']},t")
+                                            InlineKeyboardButton("No", callback_data=f"N,{db.getUserID(target)},{amount},{user['id']},t")
                                         ]
                                     ]
                                     reply_markup = InlineKeyboardMarkup(keyboard)
