@@ -242,7 +242,7 @@ def tip(update, ctx):
                                     keyboard = [
                                         [
                                             InlineKeyboardButton("Yes", callback_data=f"Y,{db.getUserID(target)},{amount},{user['id']},t"),
-                                            InlineKeyboardButton("No", callback_data=f"N,{target},{amount},{user['id']},t")
+                                            InlineKeyboardButton("No", callback_data=f"N,{db.getUserID(target)},{amount},{user['id']},t")
                                         ]
                                     ]
                                     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -523,7 +523,7 @@ def tip_or_withdrawFunc(update, ctx):
                     txid = requests.post(f"{config.apiUrl}/broadcast", data=post_data).json()['result']
 
                     ctx.bot.send_message(chat_id=chID, text=f"Success, withdrew {data[2]} {config.coin['ticker']} to address {target_address.to_string()} ")
-                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://explorer.widecoin.org/tx/{str(txid)})", parse_mode="MarkdownV2")
+                    ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](https://explorer.widecoin.org/tx/{str(txid)})", parse_mode="MarkdownV2")
                     #ctx.bot.send_message(chat_id=chID, text=f"[View Transaction](http://139\\.59\\.190\\.234/explorer/#/transaction/{str(txid)})", parse_mode="MarkdownV2")
                 else:
                     ctx.bot.send_message(chat_id=chID, text="You do not have enough funds to withdraw the specified amount.")
