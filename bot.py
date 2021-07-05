@@ -140,7 +140,7 @@ def about(update, ctx):
             ctx.bot.send_message(chat_id=update.message.chat_id,
                                  text="""
 Hello there,
-I am the Widecoin Telegram Tipbot, created by [salmaan1234] & [Widecoin]\\. Run /help to see my full list of commands\\.
+I am the Widecoin Telegram Tipbot, created by [Widecoin]\\. Run /help to see my full list of commands\\.
 This bot is fully [Open Source](https://github\\.com/widecoin\\-project/TG\\-TipBot)\\.
                                  """, parse_mode="MarkdownV2")
         else:
@@ -157,7 +157,7 @@ def price(update, ctx):
 
         price = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={config.coin['coin_name']}&vs_currencies=usd,btc").json()
         price2 = requests.get(f"https://api.coinpaprika.com/v1/ticker/{config.coin['ticker']}-{config.coin['coin_name']}").json()
-        print(str(price2['name']).lower())
+        #print(str(price2['name']).lower())
         if len(price)>0:
             btc = str(format(price[config.coin['coin_name']]["btc"], '.8f'))
             usd = str(price[config.coin['coin_name']]["usd"])
@@ -167,10 +167,10 @@ Current {config.coin['ticker']}/USD price: ${usd}
     """, parse_mode="HTML")
         elif len(price2)>0 and ((price2['name']).lower()==(config.coin['coin_name']).lower()):
             btc = price2["price_btc"]
-            usd = price2["price_usd"]
+            usd = float(price2["price_usd"])
             ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
     Current {config.coin['ticker']}/BTC price: {btc} BTC
-Current {config.coin['ticker']}/USD price: ${usd}
+Current {config.coin['ticker']}/USD price: ${('%.8f' % usd)}
     """, parse_mode="HTML")
         else:
             ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""Error market cap connection""", parse_mode="HTML")
