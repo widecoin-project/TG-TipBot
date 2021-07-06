@@ -166,10 +166,10 @@ def price(update, ctx):
 Current {config.coin['ticker']}/USD price: ${usd}
     """, parse_mode="HTML")
         elif len(price2)>0 and ((price2['name']).lower()==(config.coin['coin_name']).lower()):
-            btc = price2["price_btc"]
+            btc = float(price2["price_btc"])
             usd = float(price2["price_usd"])
             ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
-    Current {config.coin['ticker']}/BTC price: {btc} BTC
+    Current {config.coin['ticker']}/BTC price: {('%.8f' % btc)} BTC
 Current {config.coin['ticker']}/USD price: ${('%.8f' % usd)}
     """, parse_mode="HTML")
         else:
