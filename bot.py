@@ -155,6 +155,25 @@ def price(update, ctx):
 
     if timestart < int(timestamp):
 
+        price = requests.get(f"http://api.widecoin.org/getprice").json()
+
+        if len(price)>0:
+            btc = str(format(float(price["result"]["price_btc"]), '.8f')) 
+            usd = str(format(float(price["result"]["price_usd"]), '.8f'))
+            ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""
+    Current {config.coin['ticker']}/BTC price: {btc} BTC
+Current {config.coin['ticker']}/USD price: ${usd}
+    """, parse_mode="HTML")
+        else:
+            ctx.bot.send_message(chat_id=update.message.chat_id, text=f"""Error market cap connection""", parse_mode="HTML")
+   
+def price_old(update, ctx):
+    gettime = str(update.message.date).split()
+    timetoconvert = gettime[0] + "T" + gettime[1]
+    timestamp = strict_rfc3339.rfc3339_to_timestamp(timetoconvert)
+
+    if timestart < int(timestamp):
+
         price = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={config.coin['coin_name']}&vs_currencies=usd,btc").json()
         price2 = requests.get(f"https://api.coinpaprika.com/v1/ticker/{config.coin['ticker']}-{config.coin['coin_name']}").json()
         #print(str(price2['name']).lower())
